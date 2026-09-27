@@ -1,0 +1,329 @@
+/* Figma "Results" (2601:1712) — app showcase + download, 1440 x 1357 */
+
+.section {
+  background: #fff;
+  border-radius: 0 0 calc(20 * var(--u)) calc(20 * var(--u));
+}
+
+/* Figma "Ellipse 3": wide indigo → teal gradient glow behind the phone row */
+.haze {
+  position: absolute;
+  z-index: 0;
+  /* Figma x40 / y227 in the frame; the stage starts at y246 */
+  top: calc(-19 * var(--k));
+  left: calc((40 - var(--ox)) * var(--k));
+  width: calc(1361 * var(--k));
+  height: calc(613 * var(--k));
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(180deg, #697fff 0%, #68cec6 57.2%, rgba(195, 45, 112, 0) 100%);
+  opacity: 0.2;
+  filter: blur(calc(33 * var(--k)));
+}
+
+.hazeSmall {
+  position: absolute;
+  top: calc(268 * var(--u));
+  left: calc(50% - 605 * var(--u));
+  width: calc(358 * var(--u));
+  height: calc(358 * var(--u));
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 127, 252, 0.08), rgba(0, 127, 252, 0) 70%);
+}
+
+.gViolet {
+  top: calc(1071 * var(--u));
+  right: calc(-103 * var(--u));
+  width: calc(481 * var(--u));
+  height: calc(481 * var(--u));
+  filter: blur(calc(55 * var(--u)));
+  background: linear-gradient(225deg, rgba(196, 181, 253, 0.3) 0%, rgba(245, 208, 254, 0.2) 50%, rgba(245, 208, 254, 0) 100%);
+}
+
+.gCyan {
+  top: calc(1027 * var(--u));
+  left: calc(-93 * var(--u));
+  width: calc(480 * var(--u));
+  height: calc(480 * var(--u));
+  filter: blur(calc(50 * var(--u)));
+  background: linear-gradient(45deg, rgba(165, 243, 252, 0.3) 0%, rgba(191, 219, 254, 0.2) 50%, rgba(191, 219, 254, 0) 100%);
+}
+
+.inner {
+  height: calc(1357 * var(--u));
+}
+
+.intro {
+  position: absolute;
+  top: calc(90 * var(--u));
+  left: 50%;
+  width: calc(818 * var(--u));
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: calc(36 * var(--u));
+  line-height: 1.17;
+  color: #0098ff;
+  white-space: nowrap;
+}
+
+.desc {
+  margin: calc(20 * var(--u)) 0 0;
+  font-family: var(--font-inter);
+  font-size: var(--t16);
+  line-height: 1.33;
+  color: #6c6c72;
+}
+
+.desc strong {
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+/* ---------- Rotating phones: each phone glides to the next Figma slot ---------- */
+
+.stage {
+  --k: var(--u);
+  --ox: 0;
+  position: absolute;
+  top: calc(246 * var(--u));
+  left: 0;
+  width: 100%;
+  height: calc(569 * var(--u));
+}
+
+.phone {
+  position: absolute;
+  display: block;
+  left: calc((var(--x) - var(--ox)) * var(--k));
+  top: calc(var(--y) * var(--k));
+  width: calc(var(--w) * var(--k));
+  height: calc(var(--h) * var(--k));
+  object-fit: contain;
+  transition:
+    left 450ms ease,
+    top 450ms ease,
+    width 450ms ease,
+    height 450ms ease,
+    opacity 450ms ease,
+    filter 450ms ease;
+}
+
+.slot0 {
+  --x: 147;
+  --y: 95;
+  --w: 185.3;
+  --h: 380.6;
+  z-index: 10;
+  opacity: 0.76;
+  filter: blur(1.2px);
+  /* This phone just wrapped round from the far right — fade it in instead of sliding across */
+  transition: none;
+  animation: wrapIn 450ms ease;
+}
+
+.slot1 {
+  --x: 348;
+  --y: 59;
+  --w: 216.5;
+  --h: 452.9;
+  z-index: 20;
+  opacity: 0.82;
+  filter: blur(0.8px);
+}
+
+.slot2 {
+  --x: 580.5;
+  --y: 0;
+  --w: 275.9;
+  --h: 569;
+  z-index: 50;
+  opacity: 1;
+  filter: none;
+}
+
+.slot3 {
+  --x: 872.4;
+  --y: 55.25;
+  --w: 219;
+  --h: 456.5;
+  z-index: 20;
+  opacity: 0.82;
+  filter: blur(0.8px);
+}
+
+.slot4 {
+  --x: 1107.4;
+  --y: 90.8;
+  --w: 184.8;
+  --h: 385.2;
+  z-index: 10;
+  opacity: 0.76;
+  filter: blur(1.2px);
+}
+
+@keyframes wrapIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.76;
+  }
+}
+
+.dots {
+  position: absolute;
+  top: calc(847 * var(--u));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: max(9px, calc(12 * var(--u)));
+  transform: translateX(-50%);
+}
+
+.dot {
+  box-sizing: border-box;
+  width: max(10px, calc(12 * var(--u)));
+  height: max(10px, calc(12 * var(--u)));
+  padding: 0;
+  border: 1.5px solid #1a6cf5;
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.dotActive {
+  background: #1a6cf5;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dot:not(.dotActive):hover {
+    background: rgba(26, 108, 245, 0.2);
+  }
+}
+
+/* ---------- Download ---------- */
+
+.download {
+  position: absolute;
+  top: calc(945 * var(--u));
+  left: calc(129 * var(--u));
+  z-index: 2;
+  width: calc(570 * var(--u));
+}
+
+.downloadDesc {
+  margin: calc(20 * var(--u)) 0 0;
+  font-family: var(--font-inter);
+  font-size: var(--t16);
+  line-height: 1.4;
+  color: #6c6c72;
+}
+
+.stores {
+  display: flex;
+  align-items: center;
+  gap: calc(25 * var(--u));
+  margin-top: calc(36 * var(--u));
+}
+
+.store {
+  display: inline-flex;
+  line-height: 0;
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .store:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.google {
+  height: calc(47 * var(--u));
+  width: auto;
+}
+
+.apple {
+  height: calc(45 * var(--u));
+  width: auto;
+}
+
+.devices {
+  position: absolute;
+  top: calc(880 * var(--u));
+  left: calc(614 * var(--u));
+  z-index: 1;
+  width: calc(780 * var(--u));
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ---------- Tablet & mobile ---------- */
+
+@container landing (max-width: 1023px) {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 56px 20px 0;
+  }
+
+  .intro,
+  .dots,
+  .download,
+  .devices {
+    position: static;
+    transform: none;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  .title {
+    white-space: normal;
+  }
+
+  .stage {
+    --k: calc((100cqw - 40px) / 1145);
+    --ox: 147;
+    position: relative;
+    top: auto;
+    width: calc(1145 * var(--k));
+    height: calc(569 * var(--k));
+    margin-top: 32px;
+  }
+
+  .dots {
+    margin-top: 20px;
+  }
+
+  .download {
+    width: 100%;
+    margin-top: 44px;
+  }
+
+  .devices {
+    width: 100%;
+    max-width: 560px;
+    margin-top: 24px;
+  }
+}

@@ -1,7 +1,8 @@
 /*
  * Hero section — built on the 1440 x 800 Figma frame.
  * --u is one Figma pixel: exactly 1px when the section is >= 1440px wide and
- * scales down proportionally below that, so the frame ratio is preserved.
+ * scales down proportionally below that, so the frame ratio is preserved
+ * and side margins match the Figma frame at every width.
  */
 
 .root {
@@ -52,6 +53,11 @@
       #f3f7ff 0%,
       rgba(243, 247, 255, 0) 100%
     );
+}
+
+/* Keeps the header's space in the layout while the header itself is fixed to the viewport */
+.headerSlot {
+  height: calc(80 * var(--u));
 }
 
 /* ---------- Center column ---------- */
@@ -154,6 +160,13 @@
   border-radius: calc(18 * var(--u));
   box-shadow: 0 calc(8 * var(--u)) calc(24 * var(--u)) rgba(99, 102, 241, 0.06);
   padding: calc(22 * var(--u)) calc(20 * var(--u)) 0 calc(23 * var(--u));
+  transition: box-shadow 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .float:hover {
+    box-shadow: 0 calc(10 * var(--u)) calc(28 * var(--u)) rgba(99, 102, 241, 0.18);
+  }
 }
 
 .whatsapp {
@@ -351,18 +364,22 @@
   background: #13a57a;
 }
 
-/* ---------- Mobile (< 900px) ---------- */
+/* ---------- Mobile & tablet portrait (< 1024px) ---------- */
 
-@container hero (max-width: 899px) {
+@container hero (max-width: 1023px) {
   .stage {
     --u: 1px;
     width: 100%;
     height: auto;
-    padding-bottom: 48px;
+    padding-bottom: 16px;
   }
 
   .root::before {
     --u: 1px;
+  }
+
+  .headerSlot {
+    height: 64px;
   }
 
   .float,
@@ -371,7 +388,7 @@
   }
 
   .center {
-    padding: 24px 16px 0;
+    padding: 16px 16px 0;
   }
 
   .aiPill {
@@ -390,16 +407,17 @@
   }
 
   .question {
-    gap: 16px;
-    font-size: 22px;
-    line-height: 30px;
+    gap: 10px;
+    font-size: 20px;
+    line-height: 28px;
   }
 
+  /* Cards stack downward, one after another */
   .cards {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-top: 32px;
+    margin: 24px 0 0;
     padding: 0 16px;
   }
 }

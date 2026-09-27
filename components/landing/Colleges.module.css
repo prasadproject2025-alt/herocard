@@ -1,0 +1,310 @@
+/* Figma "ForCollegesSection" (2601:1494) — 1440 x 877 */
+
+.section {
+  display: flex;
+  align-items: center;
+  min-height: calc(877 * var(--u));
+  background: #f8f9fb;
+}
+
+.g1 {
+  top: calc(-128 * var(--u));
+  left: calc(-80 * var(--u));
+  width: calc(384 * var(--u));
+  height: calc(384 * var(--u));
+  filter: blur(calc(32 * var(--u)));
+  background: rgba(199, 210, 254, 0.14);
+}
+
+.g2 {
+  top: calc(50% + 218.5 * var(--u));
+  right: calc(-96 * var(--u));
+  width: calc(696 * var(--u));
+  height: calc(512 * var(--u));
+  transform: translateY(-50%);
+  filter: blur(calc(32 * var(--u)));
+  background: rgba(233, 213, 255, 0.2);
+}
+
+.g3 {
+  bottom: calc(41 * var(--u));
+  left: 37.85%;
+  right: 33.54%;
+  height: calc(313 * var(--u));
+  filter: blur(calc(32 * var(--u)));
+  background: rgba(186, 230, 253, 0.2);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: calc(458.75 * var(--u)) calc(708.67 * var(--u));
+  column-gap: calc(20 * var(--u));
+  align-items: start;
+  width: calc(1213 * var(--u));
+  padding: calc(56 * var(--u)) 0;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(24 * var(--u));
+}
+
+.title {
+  padding-top: calc(8 * var(--u));
+}
+
+.lead {
+  max-width: calc(448 * var(--u));
+}
+
+.cta {
+  width: calc(216 * var(--u));
+  margin-top: calc(8 * var(--u));
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--u));
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(12 * var(--u));
+  padding: calc(28 * var(--u));
+  border: 1px solid #f1f3f7;
+  border-radius: calc(16 * var(--u));
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #e2e8f0;
+    box-shadow: 0 calc(16 * var(--u)) calc(34 * var(--u)) calc(-14 * var(--u)) rgba(15, 23, 42, 0.16);
+  }
+}
+
+.cardLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--u));
+}
+
+.num {
+  padding: calc(2 * var(--u)) calc(8 * var(--u));
+  border: 1px solid rgba(224, 231, 255, 0.8);
+  border-radius: calc(6 * var(--u));
+  background: #eef2ff;
+  font-family: var(--font-jakarta);
+  font-weight: 700;
+  font-size: var(--t12);
+  line-height: 1.33;
+  letter-spacing: 0.3px;
+  color: #4338ca;
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: var(--t12);
+  line-height: 1.33;
+  color: #94a3b8;
+}
+
+.cardTitle {
+  margin: 0;
+  padding-top: calc(4.6 * var(--u));
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: var(--t20);
+  line-height: normal;
+  color: #051329;
+}
+
+.cardDesc {
+  margin: 0;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: var(--t14);
+  line-height: 1.571;
+  color: #64748b;
+}
+
+.chips {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(12 * var(--u));
+  padding-top: calc(4 * var(--u));
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+  padding: calc(6 * var(--u)) calc(12 * var(--u));
+  border: 1px solid transparent;
+  border-radius: calc(8 * var(--u));
+  font-family: var(--font-jakarta);
+  font-weight: 600;
+  font-size: var(--t12);
+  line-height: 1.33;
+  white-space: nowrap;
+}
+
+.chipIcon {
+  flex: none;
+  width: max(10px, calc(13 * var(--u)));
+  height: max(10px, calc(13 * var(--u)));
+}
+
+.chipGreen {
+  border-color: #53b300;
+  background: #f5ffe4;
+  font-family: var(--font-inter);
+  color: #53b300;
+}
+
+.chipMatch {
+  height: calc(20 * var(--u));
+  box-sizing: border-box;
+  padding: 0 calc(8 * var(--u));
+  border-color: #0098ff;
+  border-radius: calc(6 * var(--u));
+  background: #ecfbff;
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: var(--t10);
+  color: #0098ff;
+}
+
+.chipBlue {
+  border-color: rgba(191, 219, 254, 0.7);
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.chipSlate {
+  padding-top: calc(4 * var(--u));
+  padding-bottom: calc(4 * var(--u));
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  font-weight: 500;
+  color: #475569;
+}
+
+.chipNote {
+  font-family: var(--font-jakarta);
+  font-weight: 500;
+  font-size: var(--t11);
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.chipPurple {
+  border-color: rgba(233, 213, 255, 0.7);
+  background: #faf5ff;
+  color: #7e22ce;
+}
+
+.chipIndigo {
+  padding-top: calc(4 * var(--u));
+  padding-bottom: calc(4 * var(--u));
+  border-color: #c7d2fe;
+  background: rgba(238, 242, 255, 0.6);
+  color: #4338ca;
+}
+
+.chipRed {
+  border-color: rgba(254, 205, 211, 0.7);
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.chipSolid {
+  padding-top: calc(3 * var(--u));
+  padding-bottom: calc(3 * var(--u));
+  border-color: #0098ff;
+  background: #0098ff;
+  color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.dotGreen,
+.liveDot {
+  position: relative;
+  flex: none;
+  width: max(6px, calc(8 * var(--u)));
+  height: max(6px, calc(8 * var(--u)));
+  border-radius: 9999px;
+  background: #10b981;
+}
+
+.liveDot {
+  background: #e11d48;
+}
+
+.liveDot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #fb7185;
+  opacity: 0.75;
+  animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot::before {
+    animation: none;
+  }
+}
+
+@container landing (max-width: 1023px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 36px;
+    width: 100%;
+    padding: 56px 20px;
+    box-sizing: border-box;
+  }
+
+  .lead {
+    max-width: none;
+  }
+
+  .card {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 0;
+  }
+}

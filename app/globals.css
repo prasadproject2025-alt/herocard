@@ -1,3 +1,11 @@
+:root {
+  --font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-lora: "Lora", Georgia, serif;
+  --font-jakarta: "Plus Jakarta Sans", var(--font-inter);
+  --font-roboto: "Roboto", var(--font-inter);
+  --font-caveat: "Caveat", cursive;
+}
+
 *,
 *::before,
 *::after {
@@ -8,6 +16,26 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+/* Anchor links (Colleges, Employers…) land below the fixed header instead of under it */
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+/* Hide the scrollbar chrome everywhere while keeping scroll (wheel/trackpad/keys) working. */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge/IE */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, new Edge */
+  width: 0;
+  height: 0;
 }
 
 body {
@@ -40,4 +68,11 @@ button {
   background: none;
   padding: 0;
   cursor: pointer;
+}
+
+/* Visible keyboard focus everywhere; mouse/touch clicks stay clean */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #007ffc;
+  outline-offset: 2px;
 }

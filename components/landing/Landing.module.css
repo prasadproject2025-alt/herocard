@@ -1,0 +1,28 @@
+/*
+ * Landing sections below the hero, built on the 1440px-wide Figma "QQQ" frame.
+ * --u is one Figma pixel: 1px at >= 1440px and proportionally smaller below,
+ * so every section keeps the Figma ratio. Under 1024px the sections switch to
+ * stacked layouts with a larger unit so text stays readable.
+ */
+
+.page {
+  container: landing / inline-size;
+  overflow-x: clip;
+}
+
+.scale {
+  --u: min(1px, 100cqw / 1440);
+
+  --t10: max(9px, calc(10 * var(--u)));
+  --t11: max(9.5px, calc(11 * var(--u)));
+  --t12: max(10px, calc(12 * var(--u)));
+  --t14: max(11.5px, calc(14 * var(--u)));
+  --t16: max(13px, calc(16 * var(--u)));
+  --t20: max(14px, calc(20 * var(--u)));
+}
+
+@container landing (max-width: 1023px) {
+  .scale {
+    --u: min(1px, 100cqw / 520);
+  }
+}

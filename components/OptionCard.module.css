@@ -13,12 +13,19 @@
   box-shadow: 0 calc(10 * var(--u)) calc(30 * var(--u)) rgba(0, 152, 255, 0.08);
   overflow: hidden;
   isolation: isolate;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.card:hover {
-  transform: translateY(calc(-4 * var(--u)));
-  box-shadow: 0 calc(16 * var(--u)) calc(36 * var(--u)) rgba(0, 152, 255, 0.14);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(calc(-2 * var(--u)));
+    box-shadow: 0 calc(10 * var(--u)) calc(24 * var(--u)) rgba(0, 152, 255, 0.28);
+    cursor: pointer;
+  }
+}
+
+.card:active {
+  transform: translateY(0);
 }
 
 /* Figma-exported background art, same size as the card */
@@ -163,25 +170,32 @@
   color: #ffffff;
   font-size: calc(14 * var(--u));
   font-weight: 600;
-  transition: background 0.15s ease;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.cta:hover {
-  background: #0085e0;
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover {
+    background: #0086e0;
+    box-shadow: 0 calc(10 * var(--u)) calc(24 * var(--u)) rgba(0, 152, 255, 0.28);
+  }
+}
+
+.cta:active {
+  transform: translateY(calc(1 * var(--u)));
 }
 
 /* ---------- Mobile ---------- */
 
-@container hero (max-width: 899px) {
+@container hero (max-width: 1023px) {
   .card {
     width: 100%;
     max-width: 420px;
     height: auto;
-    min-height: 406px;
   }
 
   .cta {
-    margin-top: 28px;
+    margin-top: 20px;
   }
 
   .descriptionLine {

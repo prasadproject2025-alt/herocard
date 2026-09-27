@@ -56,7 +56,9 @@ export default function Hero() {
   return (
     <section className={styles.root} aria-labelledby="hero-title">
       <div className={styles.stage}>
-        <Header />
+        <div className={styles.headerSlot}>
+          <Header />
+        </div>
 
         {/* ---------- Floating highlights ---------- */}
         <aside className={`${styles.float} ${styles.whatsapp}`}>
