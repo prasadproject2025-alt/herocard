@@ -2,6 +2,12 @@ import Link from "next/link";
 import { CardIcon, CheckIcon } from "./icons";
 import styles from "./OptionCard.module.css";
 
+const ART = {
+  college: "/assets/hero-college-building.svg",
+  job: "/assets/hero-job-doc.svg",
+  hiring: "/assets/hero-hiring-towers.svg",
+};
+
 export default function OptionCard({
   type,
   badge,
@@ -12,8 +18,8 @@ export default function OptionCard({
   cta,
 }) {
   return (
-    <article className={styles.card}>
-      <img src={`/assets/hero-${type}-art.svg`} alt="" aria-hidden="true" className={styles.art} />
+    <article className={`${styles.card} ${styles[type]}`}>
+      <img src={ART[type]} alt="" aria-hidden="true" className={`${styles.art} ${styles[`art_${type}`]}`} />
       {type === "hiring" && <span className={styles.code} aria-hidden="true">&lt;/&gt;</span>}
 
       <div className={styles.head}>

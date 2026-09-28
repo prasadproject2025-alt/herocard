@@ -1,4 +1,13 @@
-import { ArrowRight, Bell, Zap } from "lucide-react";
+import { Fragment } from "react";
+import {
+  ArrowRight,
+  Bell,
+  BriefcaseBusiness,
+  ShieldHalf,
+  University,
+  Users,
+  Zap,
+} from "lucide-react";
 import Header from "./Header";
 import OptionCard from "./OptionCard";
 import styles from "./Hero.module.css";
@@ -44,6 +53,13 @@ const OPTIONS = [
     ],
     cta: { label: "Join Waitlist", href: "#waitlist-hiring", icon: <Bell size={14} /> },
   },
+];
+
+const STATS = [
+  { value: "800+", label: "Students", tone: "violet", Icon: Users },
+  { value: "130+", label: "colleges", tone: "blue", Icon: University },
+  { value: "100+", label: "jobs & internships", tone: "green", Icon: BriefcaseBusiness },
+  { value: "100%", label: "Safe & Trusted", tone: "orange", Icon: ShieldHalf },
 ];
 
 const MATCHED_AVATARS = [
@@ -104,7 +120,9 @@ export default function Hero() {
           <span className={styles.chipText}>
             <span className={styles.chipMain}>
               <i className={styles.liveDot} aria-hidden="true" />
-              <span aria-hidden="true">🔥</span> 142 students matched today
+              <span>
+                <span aria-hidden="true">🔥</span> 142 students matched today
+              </span>
             </span>
             <span className={styles.chipSub}>Just now • IIT, BITS, VIT</span>
           </span>
@@ -131,7 +149,7 @@ export default function Hero() {
         {/* ---------- Headline ---------- */}
         <div className={styles.center}>
           <span className={styles.aiPill}>
-            <img src="/assets/SVGRepo_iconCarrier.svg" alt="" width={26} height={20} className={styles.aiIcon} />
+            <img src="/assets/SVGRepo_iconCarrier.svg" alt="" width={25} height={20} className={styles.aiIcon} />
             AI-Powered Campus Assistant
           </span>
 
@@ -156,6 +174,24 @@ export default function Hero() {
             <OptionCard key={option.type} {...option} />
           ))}
         </div>
+
+        {/* ---------- Stats ---------- */}
+        <ul className={styles.stats}>
+          {STATS.map(({ value, label, tone, Icon }, i) => (
+            <Fragment key={label}>
+              {i > 0 && <li className={styles.statDivider} aria-hidden="true" />}
+              <li className={styles.stat}>
+                <span className={`${styles.statIcon} ${styles[tone]}`} aria-hidden="true">
+                  <Icon strokeWidth={1.5} fill={tone === "orange" ? "currentColor" : "none"} />
+                </span>
+                <span className={styles.statText}>
+                  <strong className={styles.statValue}>{value}</strong>
+                  <span className={styles.statLabel}>{label}</span>
+                </span>
+              </li>
+            </Fragment>
+          ))}
+        </ul>
       </div>
     </section>
   );

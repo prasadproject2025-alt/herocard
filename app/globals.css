@@ -20,7 +20,7 @@ body {
 
 /* Anchor links (Colleges, Employers…) land below the fixed header instead of under it */
 html {
-  scroll-padding-top: 80px;
+  scroll-padding-top: 58px;
   scroll-behavior: smooth;
 }
 
