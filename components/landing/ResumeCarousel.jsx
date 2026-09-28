@@ -174,10 +174,11 @@ export default function ResumeCarousel() {
   const [typing, setTyping] = useState(false);
   const paused = cardHovered || typing;
 
-  // Advances every 2s; holds only while the cursor is on a card or the job description is being typed.
+  // Each slide rests 2s after its 1.52s slide-in (matches .track transition); holds only while the
+  // cursor is on a card or the job description is being typed.
   useEffect(() => {
     if (paused) return undefined;
-    const id = setTimeout(() => setSlide((p) => (p + 1) % 2), 2000);
+    const id = setTimeout(() => setSlide((p) => (p + 1) % 2), 1520 + 2000);
     return () => clearTimeout(id);
   }, [paused, slide]);
 

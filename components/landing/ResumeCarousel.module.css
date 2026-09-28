@@ -54,7 +54,7 @@
 
 .track {
   display: flex;
-  transition: transform 520ms ease;
+  transition: transform 1520ms ease;
   will-change: transform;
 }
 

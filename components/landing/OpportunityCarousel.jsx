@@ -418,9 +418,10 @@ const SLIDE_BG = [s.bg1, s.bg2, s.bg3];
 export default function OpportunityCarousel() {
   const [active, setActive] = useState(0);
 
-  // Advances every 2s, even while hovered; restarting on each change gives a dot-picked slide the full 2s.
+  // Each slide rests 2s after its 1.8s entrance (0.1s delay + 1.7s .fromLeft/.fromRight), even while hovered;
+  // restarting on each change gives a dot-picked slide the full time.
   useEffect(() => {
-    const id = setTimeout(() => setActive((p) => (p + 1) % SLIDES), 2000);
+    const id = setTimeout(() => setActive((p) => (p + 1) % SLIDES), 1800 + 2000);
     return () => clearTimeout(id);
   }, [active]);
 
