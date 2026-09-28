@@ -126,14 +126,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Same hover as the footer banner buttons */
   .cta:hover {
     background: #0098ff;
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.28);
-  }
-
-  .cta:hover svg {
-    transform: translateX(3px);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22);
   }
 }
 

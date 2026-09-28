@@ -111,7 +111,6 @@
 .bubble svg {
   width: max(18px, calc(24 * var(--u)));
   height: max(18px, calc(24 * var(--u)));
-  transition: transform 0.18s ease;
 }
 
 .btnPrimary .bubble {
@@ -125,13 +124,10 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Same hover as the banner buttons below */
   .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.28);
-  }
-
-  .btn:hover .bubble svg {
-    transform: translateX(2px);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22);
   }
 }
 

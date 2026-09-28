@@ -239,14 +239,15 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Same hover as the footer banner buttons */
   .cta:hover {
-    background: #0086e0;
-    box-shadow: 0 calc(10 * var(--u)) calc(24 * var(--u)) rgba(0, 152, 255, 0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22);
   }
 }
 
 .cta:active {
-  transform: translateY(calc(1 * var(--u)));
+  transform: translateY(0);
 }
 
 /* ---------- Mobile ---------- */

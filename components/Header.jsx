@@ -42,6 +42,8 @@ export default function Header() {
         <Link href="#signup" className={styles.signUp}>
           Sign Up
         </Link>
+        {/* After the links so `.signIn:hover ~ .pill` can move it; z-index keeps it behind them */}
+        <span className={styles.pill} aria-hidden="true" />
       </div>
     </header>
   );

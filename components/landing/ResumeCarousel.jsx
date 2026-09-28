@@ -135,7 +135,7 @@ function CandidatesSlide({ hold }) {
       <div className={s.uploadRow}>
         <span>Have a PDF instead?</span>
         <button type="button" className={s.uploadLink}>
-          Upload JD file
+          Upload JD
         </button>
         <span className={s.dotSep}>·</span>
         <span className={s.mono}>PDF</span>

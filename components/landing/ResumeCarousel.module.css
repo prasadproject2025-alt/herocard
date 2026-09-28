@@ -309,9 +309,10 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Same hover as the footer banner buttons */
   .uploadBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 16px 35px rgba(22, 127, 245, 0.34), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -739,7 +740,6 @@
 .findBtn svg {
   width: max(12px, calc(16 * var(--u)));
   height: max(12px, calc(16 * var(--u)));
-  transition: transform 0.18s ease;
 }
 
 .findBtn svg:last-child {
@@ -747,14 +747,10 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Same hover as the footer banner buttons */
   .findBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.28);
-    background: linear-gradient(90deg, #2f6ef0 0%, #25a0ff 49%, #1a5af5 100%);
-  }
-
-  .findBtn:hover svg:last-child {
-    transform: translateX(3px);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22);
   }
 }
 
