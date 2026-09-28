@@ -147,6 +147,100 @@
   transform: translateY(0);
 }
 
+/* ---------- Hamburger menu (mobile / tablet only) ---------- */
+
+.menuBtn,
+.mobileMenu {
+  display: none;
+}
+
+.menuBtn {
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: #1b1818;
+  transition: background-color 0.15s ease;
+}
+
+.menuBtn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.menuBtn:hover {
+  background: #f1f5f9;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 16px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 16px 32px -16px rgba(15, 23, 42, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  padding: 14px 4px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1b1818;
+}
+
+.mobileLink:hover,
+.mobileLink:active {
+  color: #007ffc;
+}
+
+.mobileActions {
+  display: flex;
+  gap: 12px;
+}
+
+.mobileSignIn,
+.mobileSignUp {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.mobileSignIn {
+  border: 1px solid #cbd5e1;
+  color: #1b1818;
+}
+
+.mobileSignUp {
+  background: #007ffc;
+  color: #ffffff;
+}
+
 /* ---------- Mobile ---------- */
 
 @container hero (max-width: 1023px) {
@@ -156,20 +250,17 @@
     padding: 0 16px;
   }
 
-  .nav {
+  /* Nav links, Sign In and Sign Up all move into the hamburger menu */
+  .nav,
+  .actions {
     display: none;
   }
 
-  .signIn {
-    display: none;
+  .menuBtn {
+    display: grid;
   }
 
-  /* Only Sign Up is shown here, so it carries its own pill */
-  .pill {
-    display: none;
-  }
-
-  .signUp {
-    background: #007ffc;
+  .mobileMenu {
+    display: flex;
   }
 }
