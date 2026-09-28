@@ -18,7 +18,7 @@ const TEMPLATES = [
   { title: "Associate Data Analyst", desc: "SQL, Python, Excel, PowerBI, …" },
 ];
 
-function UploadSlide() {
+function UploadSlide({ hold }) {
   return (
     <div className={`${s.frame} ${s.uploadFrame}`}>
       <span className={s.tryPill}>
@@ -38,7 +38,7 @@ function UploadSlide() {
 
       <div className={s.dropWrap}>
         <span className={s.dropAura} aria-hidden="true" />
-        <div className={s.dropCard}>
+        <div className={s.dropCard} onMouseEnter={hold.onMouseEnter} onMouseLeave={hold.onMouseLeave}>
           <div className={s.dropArea}>
             <i className={`${s.corner} ${s.cTL}`} />
             <i className={`${s.corner} ${s.cTR}`} />
@@ -95,7 +95,7 @@ function UploadSlide() {
   );
 }
 
-function CandidatesSlide() {
+function CandidatesSlide({ hold }) {
   const [brief, setBrief] = useState("");
 
   return (
@@ -114,11 +114,13 @@ function CandidatesSlide() {
         verified student profiles, and delivers ranked shortlists instantly.
       </p>
 
-      <div className={s.briefCard}>
+      <div className={s.briefCard} onMouseEnter={hold.onMouseEnter} onMouseLeave={hold.onMouseLeave}>
         <textarea
           className={s.brief}
           value={brief}
           onChange={(e) => setBrief(e.target.value)}
+          onFocus={hold.onFocus}
+          onBlur={hold.onBlur}
           placeholder="e.g. We are looking for a Junior Full Stack Engineer with strong proficiency in React, Node.js, and PostgreSQL. The candidate should have hands-on project experience..."
           aria-label="Job description"
         />
@@ -168,23 +170,26 @@ function CandidatesSlide() {
 
 export default function ResumeCarousel() {
   const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [cardHovered, setCardHovered] = useState(false);
+  const [typing, setTyping] = useState(false);
+  const paused = cardHovered || typing;
 
-  // Advances every 2s; holds while the cursor (or keyboard focus) is on the section.
+  // Advances every 2s; holds only while the cursor is on a card or the job description is being typed.
   useEffect(() => {
     if (paused) return undefined;
     const id = setTimeout(() => setSlide((p) => (p + 1) % 2), 2000);
     return () => clearTimeout(id);
   }, [paused, slide]);
 
+  const hold = {
+    onMouseEnter: () => setCardHovered(true),
+    onMouseLeave: () => setCardHovered(false),
+    onFocus: () => setTyping(true),
+    onBlur: () => setTyping(false),
+  };
+
   return (
-    <section
-      className={`${shared.section} ${s.section}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
-    >
+    <section className={`${shared.section} ${s.section}`}>
       <span className={`${shared.glow} ${s.gTop}`} aria-hidden="true" />
       <span className={`${shared.glow} ${s.gCyan}`} aria-hidden="true" />
       <span className={`${shared.glow} ${s.gViolet}`} aria-hidden="true" />
@@ -193,10 +198,10 @@ export default function ResumeCarousel() {
       <div className={s.viewport}>
         <div className={s.track} style={{ transform: `translate3d(-${slide * 100}%, 0, 0)` }}>
           <div className={s.page} aria-hidden={slide !== 0}>
-            <UploadSlide />
+            <UploadSlide hold={hold} />
           </div>
           <div className={s.page} aria-hidden={slide !== 1}>
-            <CandidatesSlide />
+            <CandidatesSlide hold={hold} />
           </div>
         </div>
       </div>

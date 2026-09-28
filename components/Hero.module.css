@@ -73,6 +73,8 @@
 }
 
 .aiPill {
+  position: relative;
+  top: calc(8 * var(--u));
   display: inline-flex;
   align-items: center;
   justify-content: center;
