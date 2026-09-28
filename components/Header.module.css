@@ -84,7 +84,7 @@
   background: #007ffc;
   transform: translateY(-50%);
   pointer-events: none;
-  transition: left 0.3s ease, width 0.3s ease;
+  transition: left 0.3s ease, width 0.3s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .signIn,
@@ -99,7 +99,7 @@
   font-size: calc(16 * var(--u));
   font-weight: 500;
   line-height: normal;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.18s ease;
 }
 
 .signIn {
@@ -126,6 +126,25 @@
 .signIn:hover ~ .signUp,
 .signIn:focus-visible ~ .signUp {
   color: #1b1818;
+}
+
+/* Same lift + glow as the other CTAs, applied to whichever button carries the pill */
+@media (hover: hover) and (pointer: fine) {
+  .signIn:hover,
+  .signUp:hover {
+    transform: translateY(-2px);
+  }
+
+  .signIn:hover ~ .pill,
+  .signUp:hover ~ .pill {
+    transform: translateY(calc(-50% - 2px));
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.22);
+  }
+}
+
+.signIn:active,
+.signUp:active {
+  transform: translateY(0);
 }
 
 /* ---------- Mobile ---------- */

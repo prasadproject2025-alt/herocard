@@ -72,7 +72,7 @@ function Pill({ children }) {
   );
 }
 
-function OpportunityDiscovery() {
+function OpportunityDiscovery({ hold }) {
   return (
     <div className={`${s.frame} ${s.f1}`}>
       <div className={`${s.col} ${s.fromLeft} ${s.f1Left}`}>
@@ -101,7 +101,7 @@ function OpportunityDiscovery() {
             </li>
           ))}
         </ol>
-        <button type="button" className={`${shared.cta} ${s.exploreBtn}`} onClick={() => scrollToId("jobs")}>
+        <button type="button" className={`${shared.cta} ${s.exploreBtn}`} onClick={() => scrollToId("jobs")} {...hold}>
           Explore opportunities <ArrowRight strokeWidth={2.5} />
         </button>
       </div>
@@ -184,7 +184,7 @@ function OpportunityDiscovery() {
   );
 }
 
-function StudentExperience() {
+function StudentExperience({ hold }) {
   return (
     <div className={`${s.frame} ${s.f2}`}>
       <div className={`${s.col} ${s.fromLeft} ${s.f2Left}`}>
@@ -200,7 +200,7 @@ function StudentExperience() {
           CampusPe continuously scans <strong>1,000+ company career pages</strong>, refreshes opportunities{" "}
           <strong>every 2 hours</strong>, and surfaces the roles that match you all in one place.
         </p>
-        <a href="#jobs" className={s.studentLink} onClick={(e) => { e.preventDefault(); scrollToId("jobs"); }}>
+        <a href="#jobs" className={s.studentLink} onClick={(e) => { e.preventDefault(); scrollToId("jobs"); }} {...hold}>
           <span>See full student experience</span>
           <span className={s.studentLinkIcon}>
             <ArrowRight strokeWidth={2.5} />
@@ -327,7 +327,7 @@ function StudentExperience() {
   );
 }
 
-function CollegeDiscovery() {
+function CollegeDiscovery({ hold }) {
   return (
     <div className={`${s.frame} ${s.f3}`}>
       <div className={`${s.col} ${s.fromLeft} ${s.f3Left}`}>
@@ -405,7 +405,7 @@ function CollegeDiscovery() {
             </li>
           ))}
         </ol>
-        <a href="#colleges" className={s.dLink} onClick={(e) => { e.preventDefault(); scrollToId("colleges"); }}>
+        <a href="#colleges" className={s.dLink} onClick={(e) => { e.preventDefault(); scrollToId("colleges"); }} {...hold}>
           Explore all college rankings &amp; verified fees <ArrowRight strokeWidth={2.2} />
         </a>
       </div>
@@ -417,15 +417,22 @@ const SLIDE_BG = [s.bg1, s.bg2, s.bg3];
 
 export default function OpportunityCarousel() {
   const [active, setActive] = useState(0);
+  const [held, setHeld] = useState(false);
 
-  // Each slide rests 2s after its 1.8s entrance (0.1s delay + 1.7s .fromLeft/.fromRight), even while hovered;
-  // restarting on each change gives a dot-picked slide the full time.
+  // Each slide rests 2s after its 1.8s entrance (0.1s delay + 1.7s .fromLeft/.fromRight); holds only while
+  // the cursor is on a slide's CTA. Restarting on each change gives a dot-picked slide the full time.
   useEffect(() => {
+    if (held) return undefined;
     const id = setTimeout(() => setActive((p) => (p + 1) % SLIDES), 1800 + 2000);
     return () => clearTimeout(id);
-  }, [active]);
+  }, [held, active]);
 
-  const slides = [<OpportunityDiscovery key="a" />, <StudentExperience key="b" />, <CollegeDiscovery key="c" />];
+  const hold = { onMouseEnter: () => setHeld(true), onMouseLeave: () => setHeld(false) };
+  const slides = [
+    <OpportunityDiscovery key="a" hold={hold} />,
+    <StudentExperience key="b" hold={hold} />,
+    <CollegeDiscovery key="c" hold={hold} />,
+  ];
 
   return (
     <section
