@@ -170,11 +170,12 @@ export default function ResumeCarousel() {
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  // Advances every 2s; holds while the cursor (or keyboard focus) is on the section.
   useEffect(() => {
     if (paused) return undefined;
-    const id = setInterval(() => setSlide((p) => (p + 1) % 2), 2500);
-    return () => clearInterval(id);
-  }, [paused]);
+    const id = setTimeout(() => setSlide((p) => (p + 1) % 2), 2000);
+    return () => clearTimeout(id);
+  }, [paused, slide]);
 
   return (
     <section

@@ -161,7 +161,7 @@
 }
 
 .uploadLead {
-  max-width: calc(672 * var(--u));
+  max-width: calc(720 * var(--u));
   margin: 0 0 calc(32 * var(--u));
   font-family: var(--font-inter);
   font-weight: 500;
@@ -186,6 +186,8 @@
 
 .dropCard {
   position: relative;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   min-height: calc(324 * var(--u));
   padding: calc(24 * var(--u));
@@ -204,9 +206,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1 1 auto;
   box-sizing: border-box;
-  height: 100%;
-  padding-top: calc(28 * var(--u));
+  padding: calc(28 * var(--u)) 0 calc(29 * var(--u));
   border: 2px dashed rgba(199, 210, 254, 0.9);
   border-radius: calc(16 * var(--u));
   background: linear-gradient(to bottom, #fbfdff, #f8faff 50%, #fff);
@@ -354,7 +356,7 @@
 }
 
 .floatRight {
-  right: calc(-43 * var(--u));
+  right: calc(-51 * var(--u));
   bottom: calc(64 * var(--u));
   animation-delay: -2.2s;
 }
@@ -699,12 +701,17 @@
   color: #fff;
   white-space: nowrap;
   cursor: pointer;
-  transition: box-shadow 0.18s ease, background 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.findBtn:active {
+  transform: translateY(0);
 }
 
 .findBtn svg {
   width: max(12px, calc(16 * var(--u)));
   height: max(12px, calc(16 * var(--u)));
+  transition: transform 0.18s ease;
 }
 
 .findBtn svg:last-child {
@@ -713,8 +720,13 @@
 
 @media (hover: hover) and (pointer: fine) {
   .findBtn:hover {
-    box-shadow: 0 8px 28px rgba(0, 152, 255, 0.38), 0 2px 8px rgba(0, 152, 255, 0.18);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 152, 255, 0.28);
     background: linear-gradient(90deg, #2f6ef0 0%, #25a0ff 49%, #1a5af5 100%);
+  }
+
+  .findBtn:hover svg:last-child {
+    transform: translateX(3px);
   }
 }
 

@@ -417,13 +417,12 @@ const SLIDE_BG = [s.bg1, s.bg2, s.bg3];
 
 export default function OpportunityCarousel() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
 
+  // Advances every 2s, even while hovered; restarting on each change gives a dot-picked slide the full 2s.
   useEffect(() => {
-    if (paused) return undefined;
-    const id = setInterval(() => setActive((p) => (p + 1) % SLIDES), 2500);
-    return () => clearInterval(id);
-  }, [paused]);
+    const id = setTimeout(() => setActive((p) => (p + 1) % SLIDES), 2000);
+    return () => clearTimeout(id);
+  }, [active]);
 
   const slides = [<OpportunityDiscovery key="a" />, <StudentExperience key="b" />, <CollegeDiscovery key="c" />];
 
@@ -431,8 +430,6 @@ export default function OpportunityCarousel() {
     <section
       id="jobs"
       className={`${shared.section} ${s.section}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       <div className={s.stack}>
         {slides.map((slide, i) => (
